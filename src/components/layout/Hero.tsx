@@ -1,190 +1,73 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
-import * as THREE from 'three';
+import { motion } from 'framer-motion';
 
-// Animated background component
-const AnimatedBackground = () => {
-  const meshRef = useRef<THREE.Mesh>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({
-        x: (event.clientX / window.innerWidth) * 2 - 1,
-        y: -(event.clientY / window.innerHeight) * 2 + 1,
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = THREE.MathUtils.lerp(
-        meshRef.current.rotation.x,
-        mousePosition.y * 0.1,
-        0.1
-      );
-      meshRef.current.rotation.y = THREE.MathUtils.lerp(
-        meshRef.current.rotation.y,
-        mousePosition.x * 0.1,
-        0.1
-      );
-    }
-  });
-
+export default function Hero() {
   return (
-    <>
-      <Stars 
-        radius={100} 
-        depth={50} 
-        count={5000} 
-        factor={4} 
-        saturation={0} 
-        fade 
-        speed={1}
-      />
-      <mesh ref={meshRef} position={[0, 0, -50]}>
-        <planeGeometry args={[200, 200]} />
-        <meshBasicMaterial 
-          color="#10b981" 
-          transparent 
-          opacity={0.1} 
-          side={THREE.DoubleSide}
-        />
-      </mesh>
-    </>
-  );
-};
+    <section className="relative w-full min-h-[90vh] flex items-center bg-white overflow-hidden px-4 md:px-0">
+      {/* Large green blurred background accents */}
+      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-green-100 rounded-full blur-3xl opacity-70 z-0" aria-hidden="true" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[300px] bg-green-50 rounded-full blur-2xl opacity-60 z-0" aria-hidden="true" />
 
-const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
-  return (
-    <section className="relative h-screen min-h-[80vh] w-full overflow-hidden">
-      {/* Three.js Background */}
-      <div className="absolute inset-0 z-0">
-        <Canvas
-          camera={{ position: [0, 0, 50], fov: 75 }}
-          style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)' }}
-        >
-          <AnimatedBackground />
-          <OrbitControls 
-            enableZoom={false} 
-            enablePan={false} 
-            enableRotate={false}
-            autoRotate
-            autoRotateSpeed={0.5}
-          />
-        </Canvas>
-      </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 z-10"></div>
-
-      {/* Content */}
-      <div className="relative z-20 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-4xl mx-auto">
-          {/* Main Heading */}
-          <h1 
-            className={`text-4xl sm:text-5xl lg:text-7xl font-bold text-white mb-6 transition-all duration-1000 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ animationDelay: '0.2s' }}
+      <div className="relative z-10 w-full max-w-5xl mx-auto flex flex-col items-center md:items-start justify-center py-24 md:py-40">
+        {/* Headline */}
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-green-600 tracking-wider uppercase mb-8 font-sans leading-tight md:text-left text-center">
+          Lighting the Path of Compassion
+        </h1>
+        {/* Subtext */}
+        <p className="text-2xl sm:text-2xl md:text-3xl text-gray-600 mb-14 font-medium max-w-3xl md:text-left text-center">
+          Empowering lives, one step at a time
+        </p>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto justify-center md:justify-start mb-20">
+          <motion.div
+            whileHover={{ scale: 1.07 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative"
           >
-            <span className="block bg-gradient-to-r from-white via-green-400 to-green-500 bg-clip-text text-transparent">
-              Innovate.
-            </span>
-            <span className="block bg-gradient-to-r from-green-400 via-green-500 to-white bg-clip-text text-transparent">
-              Create.
-            </span>
-            <span className="block bg-gradient-to-r from-green-500 via-green-400 to-white bg-clip-text text-transparent">
-              Transform.
-            </span>
-          </h1>
-
-          {/* Mission Statement */}
-          <p 
-            className={`text-lg sm:text-xl lg:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed transition-all duration-1000 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ animationDelay: '0.4s' }}
-          >
-            We craft cutting-edge digital experiences that push boundaries and 
-            <span className="text-green-400 font-semibold"> inspire the future</span>. 
-            Join us in building tomorrow's solutions today.
-          </p>
-
-          {/* CTA Buttons */}
-          <div 
-            className={`flex flex-col sm:flex-row gap-4 justify-center items-center transition-all duration-1000 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ animationDelay: '0.6s' }}
+            <Link
+              href="/contact"
+              className="group inline-flex items-center justify-center px-10 py-4 rounded-full bg-green-500 text-white font-semibold text-2xl shadow-md border-2 border-green-500 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-200"
+            >
+              Get Involved
+              {/* Animated underline */}
+              <span className="absolute left-1/2 -bottom-1 w-2/3 h-1 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300 -translate-x-1/2"></span>
+              {/* Pulse ring */}
+              <span className="absolute -inset-2 rounded-full border-2 border-green-400 opacity-0 group-hover:opacity-60 animate-pulse"></span>
+            </Link>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.07 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative"
           >
             <Link
               href="/about"
-              className="group relative px-8 py-4 bg-green-500 text-white font-semibold rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:bg-green-600 focus:outline-none focus:ring-4 focus:ring-green-500/50"
+              className="inline-flex items-center justify-center px-10 py-4 rounded-full border-2 border-green-500 text-green-600 font-semibold text-2xl bg-white hover:bg-green-50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-200"
             >
-              <span className="relative z-10">Learn More</span>
-              <div className="absolute inset-0 bg-green-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute -inset-1 bg-green-500/30 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              Our Mission
             </Link>
-
-            <Link
-              href="/projects"
-              className="group relative px-8 py-4 border-2 border-green-500 text-green-400 font-semibold rounded-full text-lg hover:text-white transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-500/50"
-            >
-              <span className="relative z-10">View Projects</span>
-              <div className="absolute inset-0 bg-green-500 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-            </Link>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div 
-            className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 transition-all duration-1000 ease-out ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-            }`}
-            style={{ animationDelay: '0.8s' }}
-          >
-            <div className="flex flex-col items-center space-y-2">
-              <span className="text-green-400 text-sm font-medium">Scroll to explore</span>
-              <div className="w-6 h-10 border-2 border-green-400 rounded-full flex justify-center">
-                <div className="w-1 h-3 bg-green-400 rounded-full mt-2 animate-bounce"></div>
-              </div>
-            </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-        {/* Floating circles */}
-        <div className="absolute top-20 left-10 w-4 h-4 bg-green-500/30 rounded-full animate-pulse"></div>
-        <div className="absolute top-40 right-20 w-6 h-6 bg-green-400/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute bottom-40 left-20 w-3 h-3 bg-green-300/40 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-        <div className="absolute bottom-20 right-10 w-5 h-5 bg-green-500/25 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-        
-        {/* Floating lines */}
-        <div className="absolute top-1/4 left-1/4 w-20 h-px bg-gradient-to-r from-transparent via-green-500/50 to-transparent transform rotate-45"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-16 h-px bg-gradient-to-r from-transparent via-green-400/40 to-transparent transform -rotate-45"></div>
-      </div>
-
-      {/* Particle effect overlay */}
-      <div className="absolute inset-0 pointer-events-none z-5">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.1),transparent_50%)]"></div>
+        {/* Scroll Indicator */}
+        <motion.div
+          className="flex flex-col items-center mt-8"
+          animate={{ y: [0, 18, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+          aria-hidden="true"
+        >
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <motion.path
+              d="M12 5v14m0 0l-6-6m6 6l6-6"
+              stroke="#00C853"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Hero; 
+} 
