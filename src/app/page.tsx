@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic';
 import VerticalPillarsSection from '../components/layout/VerticalPillarsSection';
 import AnimatedLinesBG from '../components/AnimatedLinesBG';
 import GridBG from '../components/GridBG';
+import TestimonialsSection from '../components/layout/TestimonialsSection';
+
 
 const CarouselSection = dynamic(() => import('../components/layout/CarouselSection'), { ssr: false });
 
@@ -18,6 +20,8 @@ export default function HomePage() {
       <CarouselSection />
       {/* <PillarsSection /> */}
       <VerticalPillarsSection />
-    </>
+      <TestimonialsSection />
+
+        </>
   );
 }

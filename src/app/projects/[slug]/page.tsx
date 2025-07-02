@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import projects from "@/data/projects";
+import GridBG from "@/components/layout/GridBG";
 
 export default function ProjectDetailPage() {
   const params = useParams();
@@ -29,6 +30,7 @@ export default function ProjectDetailPage() {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-white px-4 py-16 flex flex-col items-center"
     >
+      <GridBG />
       {/* Breadcrumb */}
       <nav className="w-full max-w-2xl mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
         <ol className="flex items-center space-x-2">

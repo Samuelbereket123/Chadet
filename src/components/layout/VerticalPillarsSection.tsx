@@ -2,6 +2,13 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import pillars from '../../data/pillars';
 import GridBG from '../GridBG';
+import { FaHandHoldingHeart, FaLeaf, FaHandsHelping } from 'react-icons/fa';
+
+const iconMap = {
+  FaHandHoldingHeart: FaHandHoldingHeart,
+  FaLeaf: FaLeaf,
+  FaHandsHelping: FaHandsHelping,
+};
 
 export default function VerticalPillarsSection() {
   return (
@@ -19,30 +26,39 @@ export default function VerticalPillarsSection() {
         <div className="absolute left-1/2 top-0 -translate-x-1/2 h-full w-1 bg-green-100 z-0" aria-hidden="true" />
         {/* Timeline entries */}
         <ol className="relative w-full space-y-16">
-          {pillars.map((pillar, idx) => (
-            <motion.li
-              key={pillar.slug}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.7, delay: idx * 0.1 }}
-              className="relative flex w-full"
-            >
-              {/* Timeline marker above card */}
-              <div className="absolute left-1/2 -top-6 -translate-x-1/2 z-10">
-                <span className="block w-4 h-4 rounded-full bg-black border-4 border-white shadow" />
-              </div>
-              {/* Card */}
-              <div className="flex-1 flex justify-center">
-                <article className="bg-white border border-green-100 rounded-2xl shadow-lg px-8 py-8 max-w-md w-full flex flex-col gap-2 items-center">
-                  <Link href={`/${pillar.slug}`} className="text-2xl font-bold underline text-green-700 tracking-wide text-center hover:underline hover:text-blue-800">
-                    {pillar.title}
-                  </Link>
-                  <p className="text-gray-600 text-base text-center mt-2">{pillar.description}</p>
-                </article>
-              </div>
-            </motion.li>
-          ))}
+          {pillars.map((pillar, idx) => {
+            const Icon = iconMap[pillar.icon];
+            return (
+              <motion.li
+                key={pillar.slug}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.7, delay: idx * 0.1 }}
+                className="relative flex w-full"
+              >
+                {/* Timeline marker above card */}
+                <div className="absolute left-1/2 -top-6 -translate-x-1/2 z-10">
+                  <span className="block w-4 h-4 rounded-full bg-black border-4 border-white shadow" />
+                </div>
+                {/* Card */}
+                <div className="flex-1 flex justify-center">
+                  <article className="bg-white border border-green-100 rounded-2xl shadow-lg px-8 py-8 max-w-md w-full flex flex-col sm:flex-row items-center gap-4">
+                    {/* Icon on the side (left on desktop, top on mobile) */}
+                    <div className="flex-shrink-0 flex items-center justify-center sm:mr-6 mb-2 sm:mb-0">
+                      <Icon className="text-green-500 text-4xl drop-shadow" />
+                    </div>
+                    <div className="flex flex-col items-center sm:items-start text-center sm:text-left w-full">
+                      <Link href={`/${pillar.slug}`} className="text-2xl font-bold underline text-green-700 tracking-wide hover:underline hover:text-blue-800">
+                        {pillar.title}
+                      </Link>
+                      <p className="text-gray-600 text-base mt-2">{pillar.description}</p>
+                    </div>
+                  </article>
+                </div>
+              </motion.li>
+            );
+          })}
         </ol>
       </div>
     </section>

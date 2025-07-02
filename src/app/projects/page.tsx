@@ -3,13 +3,17 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import ParticlesBG from "@/components/Particles";
-import projects from "@/data/projects";
+// import ParticlesBG from "@/components/Particles";
+import projects from '../../data/projects';
+import GridBG from '../../components/GridBG';
+
 
 export default function ProjectsPage() {
   return (
     <section className="relative w-full min-h-screen bg-white py-24 px-2 sm:px-6 lg:px-8 overflow-hidden">
-      <ParticlesBG />
+      
+      {/* <ParticlesBG /> */}
+      <GridBG />
       <h1 className="text-4xl font-bold text-green-600 mb-16 text-center tracking-wide uppercase">Our Projects</h1>
       <div className="relative max-w-4xl mx-auto flex flex-col items-center">
         {/* Vertical timeline line */}
