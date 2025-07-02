@@ -24,7 +24,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 flex justify-center items-center py-6 bg-white"
+      className="fixed top-0 flex justify-center w-full z-50 transition-all duration-300 backdrop-blur-md bg-transparent"
       role="navigation"
       aria-label="Main navigation"
     >
