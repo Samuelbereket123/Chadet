@@ -25,28 +25,56 @@ export default function VerticalPillarsSection() {
           <span className="border-b-0 sm:border-b-2 border-green-700 pb-0 sm:pb-2">Strategic Problem Areas</span>
         </h2>
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 sm:gap-8 lg:gap-12 justify-items-center">
-            {pillars.map((pillar, idx) => {
+          {/* First row - 3 pillars */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-12">
+            {pillars.slice(0, 3).map((pillar, idx) => {
               const Icon = iconMap[pillar.icon];
-              const isLastTwo = idx >= 3; // 4th and 5th cards (index 3 and 4)
               return (
                 <div 
                   key={pillar.slug} 
-                  className={`flex flex-col items-center text-center w-full max-w-sm ${
-                    // On large screens, center the last two cards
-                    idx >= 3 ? 'lg:col-span-1.5 xl:col-span-1' : 'col-span-1'
-                  } ${
-                    // Center positioning for last two cards on large screens
-                    idx === 3 ? 'lg:col-start-1 xl:col-start-2' : 
-                    idx === 4 ? 'lg:col-start-2 xl:col-start-3' : ''
-                  }`}
+                  className="flex flex-col items-center text-center w-full max-w-sm"
                 >
                   {/* Number */}
                   <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-lg sm:text-xl lg:text-2xl font-bold shadow-lg mb-3 sm:mb-4">
                     {idx + 1}
                   </div>
                   {/* Content */}
-                  <div className={`bg-white border border-green-100 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow w-full ${isLastTwo ? 'p-4 sm:p-6 lg:p-8' : 'p-4 sm:p-6'}`}>
+                  <div className="bg-white border border-green-100 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow w-full p-4 sm:p-6">
+                    <div className="flex flex-col items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                      <Icon className="text-green-500 text-2xl sm:text-3xl lg:text-4xl" />
+                      <Link
+                        href={`/${pillar.slug}`}
+                        target=""
+                        rel="noopener noreferrer"
+                        className="text-lg sm:text-xl font-bold text-green-700 hover:underline text-center"
+                      >
+                        {pillar.title}
+                      </Link>
+                    </div>
+                    <p className="text-gray-600 text-sm sm:text-base leading-relaxed text-center">
+                      {pillar.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          
+          {/* Second row - 2 pillars centered */}
+          <div className="flex justify-center gap-6 sm:gap-8 lg:gap-12">
+            {pillars.slice(3, 5).map((pillar, idx) => {
+              const Icon = iconMap[pillar.icon];
+              return (
+                <div 
+                  key={pillar.slug} 
+                  className="flex flex-col items-center text-center w-full max-w-sm"
+                >
+                  {/* Number */}
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-lg sm:text-xl lg:text-2xl font-bold shadow-lg mb-3 sm:mb-4">
+                    {idx + 4}
+                  </div>
+                  {/* Content */}
+                  <div className="bg-white border border-green-100 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow w-full p-4 sm:p-6">
                     <div className="flex flex-col items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                       <Icon className="text-green-500 text-2xl sm:text-3xl lg:text-4xl" />
                       <Link

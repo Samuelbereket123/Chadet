@@ -52,9 +52,9 @@ export default function Hero() {
   }, [backgroundImages.length]);
 
   return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
-      {/* Background Image Slides */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-green-50 via-white to-green-100 sm:bg-transparent">
+      {/* Background Image Slides - Hidden on mobile */}
+      <div className="absolute inset-0 z-0 overflow-hidden hidden sm:block">
         <motion.div
           className="absolute inset-0 flex"
           animate={{ x: `-${currentSlide * 100}%` }}
@@ -80,6 +80,13 @@ export default function Hero() {
         {/* Darker overlay for better text readability */}
         <div className="absolute inset-0 bg-black/40" />
       </div>
+
+      {/* Mobile Background Pattern */}
+      <div className="absolute inset-0 z-0 sm:hidden">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-green-200 rounded-full opacity-20 blur-2xl"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-green-300 rounded-full opacity-15 blur-3xl"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-green-100 rounded-full opacity-10 blur-3xl"></div>
+      </div>
       
       {/* Animated floating icons - Hidden on mobile for better performance */}
       <div className="absolute inset-0 z-10 pointer-events-none hidden md:block">
@@ -97,8 +104,8 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* SVG Wave at the bottom */}
-      <div className="absolute bottom-0 left-0 w-full z-0">
+      {/* SVG Wave at the bottom - Hidden on mobile */}
+      <div className="absolute bottom-0 left-0 w-full z-0 hidden sm:block">
         <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-20 sm:h-32 md:h-48">
           <path fill="#bbf7d0" fillOpacity="0.5" d="M0,224L60,197.3C120,171,240,117,360,117.3C480,117,600,171,720,197.3C840,224,960,224,1080,197.3C1200,171,1320,117,1380,90.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z" />
         </svg>
@@ -106,22 +113,25 @@ export default function Hero() {
 
       {/* Unified Glassmorphic Box */}
       <div className="relative z-20 w-full max-w-4xl mx-auto flex flex-col items-center">
-        <motion.div
-          initial={{ y: 0 }}
-          animate={{ y: [0, -8, 0, 8, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="relative w-full bg-white/20 border border-white/30 rounded-2xl sm:rounded-3xl shadow-2xl backdrop-blur-xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 flex flex-col items-center gap-4 sm:gap-6"
+        <div
+          className={`relative w-full rounded-2xl sm:rounded-3xl shadow-2xl backdrop-blur-xl px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 flex flex-col items-center gap-4 sm:gap-6 ${
+            // Mobile: enhanced white card with border, Desktop: glassmorphic effect
+            'bg-white border-2 border-green-200 shadow-2xl sm:bg-white/20 sm:border sm:border-white/30'
+          }`}
           style={{
-            background: 'rgba(255, 255, 255, 0.15)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.37)',
-            border: '1px solid rgba(255, 255, 255, 0.18)'
+            // Only apply glassmorphic styles on larger screens
+            ...(typeof window !== 'undefined' && window.innerWidth >= 640 ? {
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.37)',
+              border: '1px solid rgba(255, 255, 255, 0.18)'
+            } : {})
           }}
         >
           {/* Title */}
           <motion.h1
-            className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white text-center leading-tight tracking-tight drop-shadow-2xl shadow-black"
+            className="text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-center leading-tight tracking-tight drop-shadow-2xl shadow-black text-green-700 sm:text-white"
             initial={{ y: -80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.7, ease: 'easeOut' }}
@@ -130,7 +140,7 @@ export default function Hero() {
           </motion.h1>
           {/* Tagline */}
           <motion.p
-            className="text-sm sm:text-lg lg:text-xl xl:text-2xl text-white text-center max-w-2xl mx-auto font-medium drop-shadow-2xl shadow-black px-2"
+            className="text-sm sm:text-lg lg:text-xl xl:text-2xl text-center max-w-2xl mx-auto font-medium drop-shadow-2xl shadow-black px-2 text-gray-700 sm:text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.7, ease: 'easeOut' }}
@@ -155,18 +165,18 @@ export default function Hero() {
           <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-8 mt-4 sm:mt-6">
             {/* Budget Counter */}
             <div className="flex flex-col items-center flex-1">
-              <span className="text-lg sm:text-2xl lg:text-3xl font-bold text-white mb-1 sm:mb-2 drop-shadow-2xl shadow-black">Budget</span>
-              <span className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-green-300 tabular-nums drop-shadow-2xl shadow-black">{budget.toLocaleString()}<span className="text-xl sm:text-2xl lg:text-3xl align-super font-bold">+</span></span>
+              <span className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 drop-shadow-2xl shadow-black text-green-700 sm:text-white">Budget</span>
+              <span className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tabular-nums drop-shadow-2xl shadow-black text-green-600 sm:text-green-300">{budget.toLocaleString()}<span className="text-xl sm:text-2xl lg:text-3xl align-super font-bold">+</span></span>
             </div>
             {/* Divider */}
             <div className="hidden sm:block w-px h-12 sm:h-16 bg-white/30 mx-2 sm:mx-4" />
             {/* Projects Counter */}
             <div className="flex flex-col items-center flex-1">
-              <span className="text-lg sm:text-2xl lg:text-3xl font-bold text-white mb-1 sm:mb-2 drop-shadow-2xl shadow-black">Projects this year</span>
-              <span className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-green-300 tabular-nums drop-shadow-2xl shadow-black">{projects}<span className="text-xl sm:text-2xl lg:text-3xl align-super font-bold">+</span></span>
+              <span className="text-lg sm:text-2xl lg:text-3xl font-bold mb-1 sm:mb-2 drop-shadow-2xl shadow-black text-green-700 sm:text-white">Projects this year</span>
+              <span className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tabular-nums drop-shadow-2xl shadow-black text-green-600 sm:text-green-300">{projects}<span className="text-xl sm:text-2xl lg:text-3xl align-super font-bold">+</span></span>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
