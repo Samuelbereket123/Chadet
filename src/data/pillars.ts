@@ -3,7 +3,7 @@ export interface Pillar {
   title: string;
   description: string;
   fullDescription: string;
-  icon: 'FaHandHoldingHeart' | 'FaLeaf' | 'FaHandsHelping';
+  icon: 'FaHandHoldingHeart' | 'FaLeaf' | 'FaHandsHelping' | 'FaShieldAlt';
 }
 
 const pillars: Pillar[] = [
@@ -22,11 +22,11 @@ const pillars: Pillar[] = [
     icon: 'FaLeaf',
   },
   {
-    slug: 'capacity-development-livelihoods',
-    title: 'Protection and safeguarding',
-    description: 'Building skills, knowledge, and sustainable livelihoods to foster self-reliance and economic growth.',
-    fullDescription: 'Capacity Development & Livelihoods is a critical pillar of our work. It is the foundation of everything we do. We are committed to building skills, knowledge, and sustainable livelihoods to foster self-reliance and economic growth.',
-    icon: 'FaHandsHelping',
+    slug: 'protection-safeguarding',
+    title: 'Protection and Safeguarding',
+    description: 'CHADET has developed a safeguarding policy for protecting children and adults who are obtaining support from the organisation.',
+    fullDescription: 'CHADET has developed a safeguarding policy that encompass the philosophies, policies, standards, guidelines and procedures to protect children and vulnerable adults and steps to be taken to promote their wellbeing. All its workers, contractors and visitors who have a chance to work for the organization or get in contact with children under its programs are expected to observe the policy. CHADET has cascaded its protection policy to all its stakeholders, including teachers, police officers and community members. It has also established a system that enables children to report any form of harm or Sexual Exploitation Abuse and Harassment (SEAH) on their way to and from school, in their schools and at home/communities. CHADET is committed to provide psycho-social and other forms of support for children and communities in emergency situations. CHADET had successfully implemented projects that were designed to safeguard children exposed to risky migration.',
+    icon: 'FaShieldAlt',
   },
   {
     slug: 'research-networking-public-education',

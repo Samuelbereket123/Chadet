@@ -109,7 +109,7 @@ export default function CarouselSection() {
         <div className="absolute right-10 top-0 w-60 h-60 bg-green-100 opacity-30 blur-2xl rounded-full rotate-12" />
       </div>
 
-      <h2 className="relative z-20 text-5xl sm:text-6xl font-bold text-center text-green-700 mb-24 tracking-wide uppercase drop-shadow-lg">Our Supporters</h2>
+      <h2 className="relative z-20 text-5xl sm:text-6xl font-bold text-center text-green-700 mb-24 tracking-wide uppercase drop-shadow-lg">Partnership: Past & Present</h2>
       
       <div className="relative z-20 max-w-6xl mx-auto">
         {/* Navigation Arrows */}
@@ -152,7 +152,16 @@ export default function CarouselSection() {
             
             {/* Description on the right */}
             <div className="flex-1 text-center md:text-left">
-              <h3 className="text-xl font-semibold text-green-700 mb-2">{supporters[currentIndex].alt}</h3>
+              <h3 className="text-xl font-semibold text-green-700 mb-2">
+                <a
+                  href={supporters[currentIndex].link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline hover:text-green-800 hover:no-underline transition-colors"
+                >
+                  {supporters[currentIndex].alt}
+                </a>
+              </h3>
               <p className="text-gray-600 leading-relaxed">{supporters[currentIndex].description}</p>
             </div>
           </div>

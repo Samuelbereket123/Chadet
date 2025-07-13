@@ -1,12 +1,13 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import pillars from '../../data/pillars';
-import { FaHandHoldingHeart, FaLeaf, FaHandsHelping } from 'react-icons/fa';
+import { FaHandHoldingHeart, FaLeaf, FaHandsHelping, FaShieldAlt } from 'react-icons/fa';
 
 const iconMap = {
   FaHandHoldingHeart: FaHandHoldingHeart,
   FaLeaf: FaLeaf,
   FaHandsHelping: FaHandsHelping,
+  FaShieldAlt: FaShieldAlt,
 };
 
 export default function VerticalPillarsSection() {
@@ -24,12 +25,17 @@ export default function VerticalPillarsSection() {
           <span className="border-b-2 border-green-700 pb-2">Strategic Problem Areas</span>
         </h2>
         <div className="max-w-7xl mx-auto w-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 justify-items-center">
+          <div className="grid grid-cols-6 gap-12 justify-items-center">
             {pillars.map((pillar, idx) => {
               const Icon = iconMap[pillar.icon];
               const isLastTwo = idx >= 3; // 4th and 5th cards (index 3 and 4)
               return (
-                <div key={pillar.slug} className="flex flex-col items-center text-center w-full max-w-sm">
+                <div 
+                  key={pillar.slug} 
+                  className={`flex flex-col items-center text-center w-full max-w-sm col-span-2 ${
+                    idx === 3 ? 'col-start-2' : idx === 4 ? 'col-start-4' : ''
+                  }`}
+                >
                   {/* Number */}
                   <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg mb-4">
                     {idx + 1}

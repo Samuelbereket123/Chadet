@@ -260,6 +260,184 @@ export default function SlugPage() {
     );
   }
 
+  // If it's the protection-safeguarding page, show the detailed content
+  if (slug === 'protection-safeguarding') {
+    return (
+      <motion.section
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-white px-4 pt-32 pb-16 flex flex-col items-center"
+      >
+        <GridBG />
+        
+        {/* Breadcrumb */}
+        <nav className="w-full max-w-4xl mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            <li>
+              <Link href="/" className="hover:underline text-green-600">Home</Link>
+              <span className="mx-2">/</span>
+            </li>
+            <li className="text-gray-700 font-semibold">Protection and Safeguarding</li>
+          </ol>
+        </nav>
+
+        <div className="w-full max-w-4xl bg-white border border-green-100 rounded-2xl shadow-lg p-8">
+          <h1 className="text-4xl sm:text-5xl font-bold text-green-600 mb-8 text-center">Protection and Safeguarding</h1>
+          
+          <div className="prose prose-lg max-w-none text-gray-700 space-y-8">
+            {/* Main Protection Overview */}
+            <div>
+              <p className="text-lg leading-relaxed">
+                CHADET has developed a safeguarding policy for protecting children and adults who are obtaining support from the organisation. Moreover, it was able to build the capacities of other CSOs in establishing and/or strengthening their <a href="#organizational-safeguarding" className="text-green-600 hover:text-green-800 underline font-semibold">organizational safeguarding systems</a>.
+              </p>
+              
+              {/* Read More Button */}
+              <div className="mt-6 text-center">
+                <button
+                  onClick={() => {
+                    const readMoreSection = document.getElementById('read-more-section');
+                    const readMoreButton = document.getElementById('read-more-button');
+                    if (readMoreSection && readMoreButton) {
+                      if (readMoreSection.style.display === 'none' || readMoreSection.style.display === '') {
+                        readMoreSection.style.display = 'block';
+                        readMoreButton.textContent = 'Show Less';
+                      } else {
+                        readMoreSection.style.display = 'none';
+                        readMoreButton.textContent = 'Read More';
+                      }
+                    }
+                  }}
+                  id="read-more-button"
+                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                >
+                  Read More
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Read More Section */}
+              <div id="read-more-section" className="mt-8 p-6 bg-green-50 rounded-lg" style={{ display: 'none' }}>
+                <p className="text-lg leading-relaxed">
+                  CHADET has developed a safeguarding policy that encompass the philosophies, policies, standards, guidelines and procedures to protect children and vulnerable adults and steps to be taken to promote their wellbeing. All its workers, contractors and visitors who have a chance to work for the organization or get in contact with children under its programs are expected to observe the policy. CHADET has cascaded its protection policy to all its stakeholders, including teachers, police officers and community members. It has also established a system that enables children to <a href="#report" className="text-green-600 hover:text-green-800 underline font-semibold">report</a> any form of harm or Sexual Exploitation Abuse and Harassment (SEAH) on their way to and from school, in their schools and at home/communities. CHADET is committed to provide psycho-social and other forms of support for children and communities in <a href="#emergency" className="text-green-600 hover:text-green-800 underline font-semibold">emergency</a> situations. CHADET had successfully implemented projects that were designed to safeguard children exposed to <a href="#risky-migration" className="text-green-600 hover:text-green-800 underline font-semibold">risky migration</a>.
+                </p>
+              </div>
+            </div>
+
+            {/* Organizational Safeguarding Systems */}
+            <div id="organizational-safeguarding" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Organizational Safeguarding Systems
+              </h2>
+              <p className="text-lg leading-relaxed mb-4">
+                Beyond what it does for the safeguarding of children as a child-focused organisation, with the financial and technical support that it obtained from The British Council under the <a href="#cssp2" className="text-green-600 hover:text-green-800 underline font-semibold">CSSP2</a> program, CHADET was able to build capacities of 44 Civil Society Organisations (CSOs) located in five regions (Somali, Benishangul, SNNPR, Amhara, Gambella and Addis Ababa) to develop and/or strengthen their capacities in putting in place a functional safeguarding policy and procedure.
+              </p>
+              <p className="text-lg leading-relaxed">
+                To facilitate this, CHADET, in partnership with EDA, developed and distributed a National Directory of Service Providers for facilitating referral linkages between CSOs and other agencies that are engaged in the delivery of service for victims of SEAH. A series of <a href="#training" className="text-green-600 hover:text-green-800 underline font-semibold">training</a> programs were conducted for safeguarding focal points of the CSOs and consultations were made with senior management and responsible staffs of the respective organisations. Moreover, mentoring and coaching services were provided to the CSOs by CHADET's safeguarding coordinator which, in turn, enabled the CSOs to develop an organizational culture where the management, staff members, contractors and partners working for the CSOs maintain shared values and develop the right behaviour towards the safeguarding of children and adults who are participating in their programs. Some CSOs were able to establish community- based safeguarding mechanisms through assigning watchdogs to report cases of abuse and disseminating information using local languages.
+              </p>
+            </div>
+
+            {/* CSSP2 */}
+            <div id="cssp2" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                CSSP2
+              </h2>
+              <p className="text-lg leading-relaxed">
+                The Civil Society Support Program (CSSP2) is the second round of capacity development program of The British Council that is designed to support Ethiopia's civil society capacity to "contribute to inclusive and accountable governance; and an improved environment for the promotion and protection of the human rights of all Ethiopians". To achieve this grand objective, the programme identified three themes (gender transformation, young people, and citizen-state engagement) and has taken human rights-based approach as its key strategic approach.
+              </p>
+            </div>
+
+            {/* Training */}
+            <div id="training" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Training
+              </h2>
+              <p className="text-lg leading-relaxed">
+                The training programs that were offered to safeguarding focal points and human resource managers on safe programming and recruitment practices, safeguarding and risk assessment, reporting and handling of cases, how to institutionalize safeguarding practice in an organisation, ways of preventing SEAH and reporting and case management of SEAH, minimum standards and procedures for ensuring safeguarding and accountability etc.
+              </p>
+            </div>
+
+            {/* Report */}
+            <div id="report" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Report
+              </h2>
+              <p className="text-lg leading-relaxed">
+                In order to encourage children to report cases of any forms of abuse anonymously, CHADET has placed Letter Link Boxes (LLBs) in the premises of primary and secondary schools. All cases that are reported through the LLBs will be treated in such a way that different levels of intervention are taken as may be decided by the Gender, Social inclusion and Safeguarding (GESIS) officer of CHADET, trained focal teachers/para-counselors who are coordinating the activities of both Girls' Clubs and <a href="#good-brothers-clubs" className="text-green-600 hover:text-green-800 underline font-semibold">Good brothers' Clubs</a>. Cases might be handled smoothly in consultation with care givers or referred to the local government structure, particularly the office of Women and Children Affairs, the police or CCCs, depending on the nature and magnitude of the case.
+              </p>
+            </div>
+
+            {/* Good Brother's Clubs */}
+            <div id="good-brothers-clubs" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Good Brother's Clubs
+              </h2>
+              <p className="text-lg leading-relaxed">
+                CHADET is a pioneer in establishing good brother's clubs within schools. The establishment of such clubs was initiated in response to girls stating that boys need to be educated on how to treat girls and need to better understand about the gendered social norms and barriers that affect girls in accessing and staying in school and in life in general.
+              </p>
+            </div>
+
+            {/* Risky Migration */}
+            <div id="risky-migration" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Risky Migration
+              </h2>
+              <p className="text-lg leading-relaxed">
+                Based on lessons drawn from the implementation of a project for 'the prevention and rehabilitation of children exposed to sexual abuse and exploitation' in Addis Ababa and informed from a study on the migration patterns of children that was conducted in selected Zones and cities in Northern Ethiopia. CHADET has developed and implemented projects for the safeguarding and reintegration of children who were found to be involved in risky migration. In this regard, it was able to develop an intervention model that was implemented in the places of origin, transit towns and destination cities across selected sites in Amhara and Oromia Regions. In this regard, it was able to set-up transitional shelters that were duly handed over to the government, built the capacities of local stakeholders and assisted children and care givers through providing educational, psycho-social and livelihood support.
+              </p>
+            </div>
+
+            {/* Emergency */}
+            <div id="emergency" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Emergency
+              </h2>
+              <p className="text-lg leading-relaxed">
+                CHADET had experience in providing emergency response with special focus on Education. At times when an emergency situation is created due to natural, such as drought, and/or man-made calamities, it provides supplementary food, scholastic materials and engages in improving WASH facilities within schools and communities residing around the schools. Moreover, in collaboration with scholars at Addis Ababa University (Ethiopia) and Duquesne University (USA), CHADET has developed and disseminated brochures that contained information on the skills needed to provide psychological support to individuals found under distressful conditions.
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="mt-12 pt-8 border-t border-green-200">
+            <h3 className="text-xl font-semibold text-green-700 mb-4">Quick Navigation</h3>
+            <div className="flex flex-wrap gap-4">
+              <a href="#organizational-safeguarding" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Organizational Safeguarding
+              </a>
+              <a href="#cssp2" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                CSSP2
+              </a>
+              <a href="#training" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Training
+              </a>
+              <a href="#report" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Report
+              </a>
+              <a href="#good-brothers-clubs" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Good Brother's Clubs
+              </a>
+              <a href="#risky-migration" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Risky Migration
+              </a>
+              <a href="#emergency" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Emergency
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link href="/" className="inline-block px-6 py-3 rounded-full border-2 border-green-500 text-green-600 font-semibold hover:bg-green-50 transition">
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </motion.section>
+    );
+  }
+
   // For other pillars, show the default content
   if (!pillar) {
     return (
