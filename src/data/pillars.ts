@@ -36,10 +36,10 @@ const pillars: Pillar[] = [
     icon: 'FaLeaf',
   },
   {
-    slug: 'advocacy',
+    slug: 'capacity-development',
     title: 'Capacity Development',
-    description: 'Championing the rights and well-being of children and communities through policy influence and public campaigns.',
-    fullDescription: 'Advocacy is a critical pillar of our work. It is the foundation of everything we do. We are committed to championing the rights and well-being of children and communities through policy influence and public campaigns.',
+    description: 'CHADET provides training and support for its local stakeholders to build their capacities and encourage them to sustain project activities.',
+    fullDescription: 'CHADET provides training and support for its local stakeholders. This is aimed at building their capacities and encouraging them to gain confidence to sustain project activities and take on new initiatives in developing community-led projects to find lasting solutions to local problems.',
     icon: 'FaHandHoldingHeart',
   },
 ];

@@ -9,6 +9,7 @@ import { useRef, useEffect, useState } from 'react';
 import type { Swiper as SwiperType } from 'swiper';
 import GridBG from '../GridBG';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const supporters = [
   { 
@@ -97,7 +98,7 @@ export default function CarouselSection() {
   };
 
   return (
-    <section className="relative w-full bg-gradient-to-b from-green-50 to-white py-32 px-2 sm:px-6 lg:px-8 overflow-hidden border-b-2 border-green-700">
+    <section className="relative w-full bg-gradient-to-b from-green-50 to-white py-16 sm:py-24 lg:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden border-b-2 border-green-700">
       <GridBG />
       {/* Soft glowing gradients and blurred shapes (same as Hero) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -109,71 +110,80 @@ export default function CarouselSection() {
         <div className="absolute right-10 top-0 w-60 h-60 bg-green-100 opacity-30 blur-2xl rounded-full rotate-12" />
       </div>
 
-      <h2 className="relative z-20 text-5xl sm:text-6xl font-bold text-center text-green-700 mb-24 tracking-wide uppercase drop-shadow-lg">Partnership: Past & Present</h2>
+      <h2 className="relative z-20 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-center text-green-700 mb-12 sm:mb-16 lg:mb-24 tracking-wide uppercase drop-shadow-lg">Partnership: Past & Present</h2>
       
       <div className="relative z-20 max-w-6xl mx-auto">
         {/* Navigation Arrows */}
         <button
           onClick={prevSupporter}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white border border-green-200 rounded-full shadow-lg flex items-center justify-center text-green-600 hover:bg-green-50 transition-colors"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 bg-white border border-green-200 rounded-full shadow-lg flex items-center justify-center text-green-600 hover:bg-green-50 transition-colors"
         >
-          <FaChevronLeft className="text-xl" />
+          <FaChevronLeft className="text-lg sm:text-xl" />
         </button>
         
         <button
           onClick={nextSupporter}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 bg-white border border-green-200 rounded-full shadow-lg flex items-center justify-center text-green-600 hover:bg-green-50 transition-colors"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 bg-white border border-green-200 rounded-full shadow-lg flex items-center justify-center text-green-600 hover:bg-green-50 transition-colors"
         >
-          <FaChevronRight className="text-xl" />
+          <FaChevronRight className="text-lg sm:text-xl" />
         </button>
 
         {/* Current Supporter Card */}
-        <div className="bg-white border border-green-100 rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow mx-16">
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-            {/* Logo on the left */}
-            <div className="flex-shrink-0">
-              <a
-                href={supporters[currentIndex].link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block cursor-pointer"
-              >
-                <Image
-                  src={supporters[currentIndex].src}
-                  alt={supporters[currentIndex].alt}
-                  width={180}
-                  height={100}
-                  className="rounded-xl shadow-md object-contain w-48 h-24 bg-white transition-transform duration-300 hover:scale-105"
-                  draggable={false}
-                  priority={true}
-                />
-              </a>
-            </div>
-            
-            {/* Description on the right */}
-            <div className="flex-1 text-center md:text-left">
-              <h3 className="text-xl font-semibold text-green-700 mb-2">
-                <a
-                  href={supporters[currentIndex].link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline hover:text-green-800 hover:no-underline transition-colors"
-                >
-                  {supporters[currentIndex].alt}
-                </a>
-              </h3>
-              <p className="text-gray-600 leading-relaxed">{supporters[currentIndex].description}</p>
-            </div>
-          </div>
+        <div className="bg-white border border-green-100 rounded-xl sm:rounded-2xl shadow-lg p-4 sm:p-6 hover:shadow-xl transition-shadow mx-8 sm:mx-12 lg:mx-16 min-h-[180px] sm:min-h-[200px]">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.4, ease: 'easeInOut' }}
+            >
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-4 sm:gap-6">
+                {/* Logo on the left */}
+                <div className="flex-shrink-0">
+                  <a
+                    href={supporters[currentIndex].link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer"
+                  >
+                    <Image
+                      src={supporters[currentIndex].src}
+                      alt={supporters[currentIndex].alt}
+                      width={180}
+                      height={100}
+                      className="rounded-lg sm:rounded-xl shadow-md object-contain w-32 h-16 sm:w-40 sm:h-20 lg:w-48 lg:h-24 bg-white transition-transform duration-300 hover:scale-105"
+                      draggable={false}
+                      priority={true}
+                    />
+                  </a>
+                </div>
+                {/* Description on the right */}
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-lg sm:text-xl font-semibold text-green-700 mb-2">
+                    <a
+                      href={supporters[currentIndex].link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline hover:text-green-800 hover:no-underline transition-colors"
+                    >
+                      {supporters[currentIndex].alt}
+                    </a>
+                  </h3>
+                  <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{supporters[currentIndex].description}</p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Dots indicator */}
-        <div className="flex justify-center mt-6 space-x-2">
+        <div className="flex justify-center mt-4 sm:mt-6 space-x-1 sm:space-x-2">
           {supporters.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`w-3 h-3 rounded-full transition-colors ${
+              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
                 idx === currentIndex ? 'bg-green-600' : 'bg-green-200'
               }`}
             />

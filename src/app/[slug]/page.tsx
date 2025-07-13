@@ -438,7 +438,291 @@ export default function SlugPage() {
     );
   }
 
-  // For other pillars, show the default content
+  // If it's the research-networking-public-education page, show the detailed content
+  if (slug === 'research-networking-public-education') {
+    return (
+      <motion.section
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-white px-4 pt-32 pb-16 flex flex-col items-center"
+      >
+        <GridBG />
+        
+        {/* Breadcrumb */}
+        <nav className="w-full max-w-4xl mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            <li>
+              <Link href="/" className="hover:underline text-green-600">Home</Link>
+              <span className="mx-2">/</span>
+            </li>
+            <li className="text-gray-700 font-semibold">Research, Networking and Public Education</li>
+          </ol>
+        </nav>
+
+        <div className="w-full max-w-4xl bg-white border border-green-100 rounded-2xl shadow-lg p-8">
+          <h1 className="text-4xl sm:text-5xl font-bold text-green-600 mb-8 text-center">Research, Networking and Public Education</h1>
+          
+          <div className="prose prose-lg max-w-none text-gray-700 space-y-8">
+            {/* Main Overview */}
+            <div>
+              <p className="text-lg leading-relaxed">
+                CHADET's engagement in undertaking research is aimed at using the outcomes of research for improving its own work and services to children and young people on one hand and to contribute towards providing evidence for improving policy and practice.
+              </p>
+            </div>
+
+            {/* Research */}
+            <div id="research" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Research
+              </h2>
+              <p className="text-lg leading-relaxed">
+                CHADET had coordinated research undertakings in collaboration with higher learning institutions within and out of the country. Between the years 2004-2006, CHADET was able to work closely with The Royal Tropical Institute of The Netherlands and the Ethiopian Social Science Research Initiative in the implementation of a multi-country research initiative. It served as a secretary to the national steering committee and coordinated the undertaking of research by graduate and undergraduate students and staffs drawn from different Universities. CHADET has also participated in another multi-country research that was conducted in Ethiopia and Nepal focusing on marginalised youth in fragile and conflict affected situations. Partners in this research were University of London-Goldsmiths and The University of Brighton (UK); Tribhuvan University (Nepal) and Addis Ababa University (Ethiopia). Under this research program, an opportunity was given for two young scholars (one from each country) to be enrolled into a PhD program at the University of London. The final findings were published in a form of a book in 2022 under the title 'Youth and Positive Uncertainty: Negotiating pathways in post-conflict and fragile environments. The research was funded by ESRC/DFID Poverty Alleviation Fund. CHADET is a founding member of Child Research Policy and Practice Forum (CRPF), which is currently hosted by the Federal Ministry of Women, children and Youth.
+              </p>
+            </div>
+
+            {/* Networking */}
+            <div id="networking" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Networking
+              </h2>
+              <p className="text-lg leading-relaxed">
+                CHADET believes that networking and collaboration with other CSOs and institutions that work to reduce the challenges faced by children and young people would bring about better outcomes and lasting impact. Consequently, CHADET has acquired a wealth of experience in leading and participating in <a href="#networks" className="text-green-600 hover:text-green-800 underline font-semibold">networks</a> that are established to carry out activities and services in a coordinated manner. More recently, CHADET has coordinated the establishment of the <a href="#ecran" className="text-green-600 hover:text-green-800 underline font-semibold">Ethiopian Child Rights Advocacy Network (ECRAN)</a>.
+              </p>
+            </div>
+
+            {/* Networks */}
+            <div id="networks" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Networks
+              </h2>
+              <p className="text-lg leading-relaxed mb-4">
+                CHADET is a member of networks such as CCRDA that are established with an aim of promoting collaboration and support among civil Society Organisations. CHADET had an experience of leading and working as a member of other networks for implementing projects jointly. It led a network that was set-up for the implementation of a 'Multi-sectoral Project for the Prevention, Protection and Rehabilitation of Sexually Abused and exploited Children' in Addis Ketema Sub-City of Addis Ababa. Members of the network include national, Regional and International CSOs and relevant government agencies.
+              </p>
+              <p className="text-lg leading-relaxed">
+                In partnership with other national and international NGOs, CHADET has also implemented other projects in different parts of the country. Among these projects are 'Children on the Move in the Northern Ethiopian Corridor' that was jointly implemented with four other local NGOs and 'Stemming Irregular Migration in Northern and Central Ethiopia' (SINCE) that was implemented in partnership with three other international NGOs, namely, <a href="https://www.peopleinneed.net" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 underline font-semibold">People In Need (PIN)</a>, <a href="https://www.concern.net" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 underline font-semibold">Concern Worldwide</a> and <a href="https://www.volint.it" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 underline font-semibold">Volontariato Internazionale Per Lo Sviluppo (VIS)</a>. CHADET has also implemented a project for Better Migration Management in collaboration with Emanual Development Association (EDA), Live Addis and Addis Ababa Women Association.
+              </p>
+            </div>
+
+            {/* Child Rights Advocacy Network (ECRAN) */}
+            <div id="ecran" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Child Rights Advocacy Network (ECRAN)
+              </h2>
+              <p className="text-lg leading-relaxed mb-4">
+                Having realized the complex and diverse nature of the causes of children's vulnerabilities, which are embedded in structural systems of the country as well as international economic, social, and political orders that require a multi-faceted effort by different stakeholders, CHADET has recently initiated the establishment of the Ethiopian Child Rights Advocacy Network (ECRAN). About fifteen CSOs have already joined the network. In the course of the establishment of the network, CHADET obtained technical support from The Eastern Africa Child Rights Network (EACRN), Save the Children and Plan International. The network is in. the process of registration with the Authority for Civil Society Organisations (ACSO) of The Federal Democratic Republic of Ethiopia.
+              </p>
+              <p className="text-lg leading-relaxed">
+                The first consultative and founding meeting of The Ethiopian Child Rights Advocacy Network (ECRAN) was conducted between November 13-14,2023 in Addis Ababa. The meeting was accompanied by a consultative workshop on stakeholders' engagement in the creation of an enabling environment for local civil society organizations that are engaged in the promotion and protection of the rights of children in Ethiopia.
+              </p>
+            </div>
+
+            {/* Public Education */}
+            <div id="public-education" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Public Education
+              </h2>
+              <p className="text-lg leading-relaxed mb-4">
+                CHADET undertakes mass awareness raising activities on pertinent issues that affect the lives of children, young people and marginalised communities. It deploys its own <a href="#music-drama" className="text-green-600 hover:text-green-800 underline font-semibold">music/drama team</a> and a <a href="#mobile-unit" className="text-green-600 hover:text-green-800 underline font-semibold">mobile unit</a> to convey educational messages to a wider audience.
+              </p>
+            </div>
+
+            {/* Music and Drama */}
+            <div id="music-drama" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Music and Drama
+              </h2>
+              <p className="text-lg leading-relaxed">
+                CHADET uses music and drama to convey useful messages to the general public and targeted audiences aimed at overcoming harmful social norms and practices around children's rights, gender, disability and protection/safeguarding of children and adults at risk.
+              </p>
+            </div>
+
+            {/* Mobile Unit */}
+            <div id="mobile-unit" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Mobile Unit
+              </h2>
+              <p className="text-lg leading-relaxed">
+                The unit is made up of a truck with a convertible stage mounted on its back and could be taken to different locations both in urban and rural areas. The team adopts a 'Forum Drama' approach where the audience could also participate in the discussions that take place following the performance of the drama. Hence, the shows are participatory in nature and attempt to encourage audiences to engage in dialogue towards bringing about changes among their respective communities depending on the issue presented during the show. <span className="text-green-600 font-semibold">See photos</span>
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="mt-12 pt-8 border-t border-green-200">
+            <h3 className="text-xl font-semibold text-green-700 mb-4">Quick Navigation</h3>
+            <div className="flex flex-wrap gap-4">
+              <a href="#research" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Research
+              </a>
+              <a href="#networking" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Networking
+              </a>
+              <a href="#networks" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Networks
+              </a>
+              <a href="#ecran" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                ECRAN
+              </a>
+              <a href="#public-education" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Public Education
+              </a>
+              <a href="#music-drama" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Music & Drama
+              </a>
+              <a href="#mobile-unit" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Mobile Unit
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link href="/" className="inline-block px-6 py-3 rounded-full border-2 border-green-500 text-green-600 font-semibold hover:bg-green-50 transition">
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </motion.section>
+    );
+  }
+
+  // If it's the capacity-development page, show the detailed content
+  if (slug === 'capacity-development') {
+    return (
+      <motion.section
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="min-h-screen bg-white px-4 pt-32 pb-16 flex flex-col items-center"
+      >
+        <GridBG />
+        
+        {/* Breadcrumb */}
+        <nav className="w-full max-w-4xl mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+          <ol className="flex items-center space-x-2">
+            <li>
+              <Link href="/" className="hover:underline text-green-600">Home</Link>
+              <span className="mx-2">/</span>
+            </li>
+            <li className="text-gray-700 font-semibold">Capacity Development</li>
+          </ol>
+        </nav>
+
+        <div className="w-full max-w-4xl bg-white border border-green-100 rounded-2xl shadow-lg p-8">
+          <h1 className="text-4xl sm:text-5xl font-bold text-green-600 mb-8 text-center">Capacity Development</h1>
+          
+          <div className="prose prose-lg max-w-none text-gray-700 space-y-8">
+            {/* Main Overview */}
+            <div>
+              <p className="text-lg leading-relaxed">
+                CHADET provides training and support for its local stakeholders. This is aimed at building their capacities and encouraging them to gain confidence to sustain project activities and take on new initiatives in developing community-led projects to find lasting solutions to local problems.
+              </p>
+              
+              {/* Read More Button */}
+              <div className="mt-6 text-center">
+                <button
+                  onClick={() => {
+                    const readMoreSection = document.getElementById('capacity-read-more-section');
+                    const readMoreButton = document.getElementById('capacity-read-more-button');
+                    if (readMoreSection && readMoreButton) {
+                      if (readMoreSection.style.display === 'none' || readMoreSection.style.display === '') {
+                        readMoreSection.style.display = 'block';
+                        readMoreButton.textContent = 'Show Less';
+                      } else {
+                        readMoreSection.style.display = 'none';
+                        readMoreButton.textContent = 'Read More';
+                      }
+                    }
+                  }}
+                  id="capacity-read-more-button"
+                  className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-500 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+                >
+                  Read More
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Read More Section */}
+              <div id="capacity-read-more-section" className="mt-8 p-6 bg-green-50 rounded-lg" style={{ display: 'none' }}>
+                <p className="text-lg leading-relaxed">
+                  CHADET believes that building capacities of its local stakeholders will benefit communities in ensuring the sustainability of key activities even beyond the life of the project. In this regard, it provides <a href="#delta" className="text-green-600 hover:text-green-800 underline font-semibold">DELTA</a> training for development workers, field staffs and influential community leaders. It also undertakes capacity strengthening activities for grassroot level Community-Based Organisations (CBOs) such as <a href="#idirs" className="text-green-600 hover:text-green-800 underline font-semibold">Idirs</a> and <a href="#cccs" className="text-green-600 hover:text-green-800 underline font-semibold">Community Care coalitions (CCCs)</a>. Moreover, it provides support for schools to undertake <a href="#igas" className="text-green-600 hover:text-green-800 underline font-semibold">Income Generation Activities (IGAs)</a> such that they would be able to support vulnerable children who are not obtaining direct support from CHADET. The income they generate through the IGA scheme is used to cover costs related to scholastic materials and school uniforms.
+                </p>
+              </div>
+            </div>
+
+            {/* DELTA */}
+            <div id="delta" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                DELTA
+              </h2>
+              <p className="text-lg leading-relaxed">
+                DELTA is an acronym that stands for Development Education and Leadership Teams in Action. This training is mainly aimed at building capacities of development workers and community leaders through introducing contemporary concepts and practices in social development in general and community development in particular. Furthermore, the training contributes to raise the levels of awareness of development actors on issues of social concern in society through stimulating a culture of critical thinking and enhancing skills necessary to facilitate social transformation.
+              </p>
+            </div>
+
+            {/* Idirs */}
+            <div id="idirs" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Idirs
+              </h2>
+              <p className="text-lg leading-relaxed">
+                Idirs are voluntary associations that are formed by communities who are often residing in the same geographical locations. They have historically evolved along the growth of population living in urban areas with relationships with their relatives and members of families back home is becoming lose in due course of time. Hence, Idirs were basically established to facilitate funeral services for their members. With the advent of the AIDS pandemic, Idirs became involved in the provision of support and services for persons and families affected by AIDS and also in undertaking development activities in communities. CHADET has been working closely with Idirs and assisted them to strengthen their institutional capacities such that they could support children and engage in facilitating and sustaining development programs that were introduced by CHADET. Some Idirs have been able to provide support for thousands of children to help them continue their education to the level of higher education.
+              </p>
+            </div>
+
+            {/* Community Care Coalitions */}
+            <div id="cccs" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Community Care Coalitions (CCCs)
+              </h2>
+              <p className="text-lg leading-relaxed">
+                Community Care Coalitions (CCCs) are voluntary associations that are organised to resolve social problems that are affecting children, person with disabilities and other vulnerable groups at kebele level through mobilizing resources from the community and by working very closely with civil society Organizations. CCCs has been established and became operational in the Amhara and other regions of the country.
+              </p>
+            </div>
+
+            {/* Income Generation Activities */}
+            <div id="igas" className="scroll-mt-20">
+              <h2 className="text-3xl font-bold text-green-700 mb-4 border-b-2 border-green-200 pb-2">
+                Income Generation Activities (IGAs)
+              </h2>
+              <p className="text-lg leading-relaxed">
+                CHADET assisted Idirs and schools to set-up shops, communal showers, toilets, etc. to use as a means to generate income and to be able to sustain some aspects of the projects that phase out in due course.
+              </p>
+            </div>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="mt-12 pt-8 border-t border-green-200">
+            <h3 className="text-xl font-semibold text-green-700 mb-4">Quick Navigation</h3>
+            <div className="flex flex-wrap gap-4">
+              <a href="#delta" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                DELTA
+              </a>
+              <a href="#idirs" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Idirs
+              </a>
+              <a href="#cccs" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Community Care Coalitions
+              </a>
+              <a href="#igas" className="px-4 py-2 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors">
+                Income Generation Activities
+              </a>
+            </div>
+          </div>
+
+          <div className="mt-8 text-center">
+            <Link href="/" className="inline-block px-6 py-3 rounded-full border-2 border-green-500 text-green-600 font-semibold hover:bg-green-50 transition">
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </motion.section>
+    );
+  }
+
+  // Default case for other slugs
   if (!pillar) {
     return (
       <motion.section

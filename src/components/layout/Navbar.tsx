@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -66,7 +67,16 @@ export default function Navbar() {
 
           {/* Mobile Hamburger */}
           <div className="md:hidden flex w-full justify-between items-center">
-            <span className="text-green-700 text-xl font-mono tracking-widest ml-2">MENU</span>
+            <div className="flex items-center ml-2">
+              <Image
+                src="/assets/images/LOGO/chadet logo.png"
+                alt="CHADET Logo"
+                width={120}
+                height={40}
+                className="h-8 w-auto object-contain"
+                priority
+              />
+            </div>
             <button
               className="flex flex-col justify-center items-center w-10 h-10 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent relative z-50 bg-green-50"
               aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
