@@ -24,12 +24,21 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 flex justify-center w-full z-50 transition-all duration-300 backdrop-blur-md bg-transparent"
+      className="fixed top-0 flex justify-center w-full z-50 transition-all duration-300"
       role="navigation"
       aria-label="Main navigation"
     >
       <div className="w-full max-w-3xl px-2">
-        <div className="bg-white rounded-3xl p-4 flex items-center justify-center">
+        <div 
+          className="rounded-3xl p-4 flex items-center justify-center"
+          style={{
+            background: 'rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.37)',
+            border: '1px solid rgba(255, 255, 255, 0.18)'
+          }}
+        >
           {/* Desktop Nav */}
           <div className="hidden md:flex w-full justify-center">
             <div className="bg-green-50 rounded-full flex items-center gap-2 px-2 py-1 w-full max-w-2xl">

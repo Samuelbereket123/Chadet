@@ -4,8 +4,8 @@ import { useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import projects from "@/data/projects";
-import GridBG from "@/components/layout/GridBG";
+import projects from "../../../data/projects";
+import GridBG from "../../../components/GridBG";
 
 export default function ProjectDetailPage() {
   const params = useParams();

@@ -1,16 +1,25 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import { FaPlay, FaHandHoldingHeart, FaLeaf, FaHandsHelping } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import AnimatedLinesBG from '../AnimatedLinesBG';
-import GridBG from '../GridBG';
+// import AnimatedLinesBG from '../AnimatedLinesBG';
+// import GridBG from '../GridBG';
 
 export default function Hero() {
   // Counter logic
   const [budget, setBudget] = useState(0);
   const [projects, setProjects] = useState(0);
+  
+  // Background slide logic
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const backgroundImages = [
+    '/assets/images/HeroSlides/joel-muniz-BErJJL_KsjA-unsplash.jpg',
+    '/assets/images/HeroSlides/bill-wegener-8ldqRkOk5oo-unsplash.jpg',
+    '/assets/images/HeroSlides/ben-white-PAiVzSmYy-c-unsplash.jpg',
+    '/assets/images/HeroSlides/background-Image.jpg'
+  ];
 
   useEffect(() => {
     let budgetStart = 0;
@@ -33,20 +42,45 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden px-0 sm:px-0 lg:px-0 py-24 bg-white">
-      <AnimatedLinesBG />
-      <GridBG />
-      {/* Soft glowing gradients and blurred shapes */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        {/* Left Glow */}
-        <div className="absolute left-0 top-1/4 w-[40vw] h-[60vw] max-w-[500px] bg-green-200 opacity-40 blur-3xl rounded-full" />
-        {/* Right Glow (now matches left) */}
-        <div className="absolute right-0 top-1/4 w-[40vw] h-[60vw] max-w-[500px] bg-green-200 opacity-40 blur-3xl rounded-full" />
-        {/* Top Right Abstract Shape */}
-        <div className="absolute right-10 top-0 w-60 h-60 bg-green-100 opacity-30 blur-2xl rounded-full rotate-12" />
-      </div>
+  // Background slide effect
+  useEffect(() => {
+    const slideInterval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
+    }, 4000); // Change slide every 4 seconds
 
+    return () => clearInterval(slideInterval);
+  }, [backgroundImages.length]);
+
+  return (
+    <section className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden px-0 sm:px-0 lg:px-0 py-32">
+      {/* Background Image Slides */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <motion.div
+          className="absolute inset-0 flex"
+          animate={{ x: `-${currentSlide * 100}%` }}
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+        >
+          {backgroundImages.map((image, index) => (
+            <div
+              key={index}
+              className="w-full h-full flex-shrink-0 bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${image})`,
+              }}
+            />
+          ))}
+          {/* Duplicate first image for seamless loop */}
+          <div
+            className="w-full h-full flex-shrink-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url(${backgroundImages[0]})`,
+            }}
+          />
+        </motion.div>
+        {/* Darker overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40" />
+      </div>
+      
       {/* Animated floating icons */}
       <div className="absolute inset-0 z-10 pointer-events-none">
         <motion.div initial={{ y: -20, opacity: 0.7 }} animate={{ y: [0, -10, 0], opacity: [0.7, 1, 0.7] }} transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut' }} className="absolute left-10 top-1/3 text-green-400 text-4xl">
@@ -70,70 +104,73 @@ export default function Hero() {
         </svg>
       </div>
 
-      {/* Badge */}
-      <div className="relative z-20 mb-6">
-        <span className="inline-block rounded-full bg-black/10 border border-green-600 px-5 py-2 text-sm font-semibold text-green-700 shadow backdrop-blur-md">
-          Been here since 2000
-        </span>
-      </div>
-
-      {/* Pill-shaped headline container */}
+      {/* Unified Glassmorphic Box */}
       <div className="relative z-20 w-full max-w-3xl mx-auto flex flex-col items-center">
-        <div className="bg-black/5 border border-green-600 rounded-full px-8 py-4 flex flex-col items-center w-full shadow-lg backdrop-blur-md">
+        <motion.div
+          initial={{ y: 0 }}
+          animate={{ y: [0, -16, 0, 16, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          className="relative w-full bg-white/20 border border-white/30 rounded-3xl shadow-2xl backdrop-blur-xl px-8 py-10 flex flex-col items-center gap-6"
+          style={{
+            background: 'rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px 0 rgba(255, 255, 255, 0.37)',
+            border: '1px solid rgba(255, 255, 255, 0.18)'
+          }}
+        >
+          {/* Badge */}
+          {/* <span className="inline-block rounded-full bg-black/10 border border-green-600 px-5 py-2 text-sm font-semibold text-green-700 shadow backdrop-blur-md mb-2">
+            Been here since 2000
+          </span> */}
+          {/* Title */}
           <motion.h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-black text-center leading-tight tracking-tight"
+            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white text-center leading-tight tracking-tight drop-shadow-2xl shadow-black"
             initial={{ y: -80, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.7, ease: 'easeOut' }}
           >
             CHADET ETHIOPIA
           </motion.h1>
-        </div>
-        {/* Tagline */}
-        <motion.p
-          className="mt-6 text-lg sm:text-2xl text-gray-800 text-center max-w-2xl mx-auto font-medium"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.7, ease: 'easeOut' }}
-        >
-          Empowering children and communities for a brighter tomorrow. Join us in making a lasting impact.
-        </motion.p>
-        {/* CTA Buttons */}
-        <motion.div
-          className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.5, duration: 0.7, ease: 'easeOut' }}
-        >
-          <Link
-            href="#get-involved"
-            className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-green-600 text-white font-bold text-lg shadow-lg hover:bg-green-700 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-300"
+          {/* Tagline */}
+          <motion.p
+            className="text-lg sm:text-2xl text-white text-center max-w-2xl mx-auto font-medium drop-shadow-2xl shadow-black"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2, duration: 0.7, ease: 'easeOut' }}
           >
-            Get Involved
-          </Link>
-          <Link
-            href="#donate"
-            className="inline-flex items-center gap-2 px-6 py-4 rounded-full bg-black/5 border border-green-600 text-green-700 font-semibold text-lg hover:bg-green-600/10 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-300"
+            Empowering children and communities for a brighter tomorrow. Join us in making a lasting impact.
+          </motion.p>
+          {/* CTA Buttons */}
+          <motion.div
+            className="flex justify-center items-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.7, ease: 'easeOut' }}
           >
-            <FaHandHoldingHeart className="text-green-600" />
-            Donate Now
-          </Link>
+            <Link
+              href="#donate"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-green-600 text-white font-bold text-lg shadow-lg hover:bg-green-700 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-green-300"
+            >
+              2025 Annual Report
+            </Link>
+          </motion.div>
+                      {/* Counters Section */}
+            <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-8 mt-6">
+              {/* Budget Counter */}
+              <div className="flex flex-col items-center flex-1">
+                <span className="text-2xl sm:text-3xl font-bold text-white mb-2 drop-shadow-2xl shadow-black">Budget</span>
+                <span className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-green-300 tabular-nums drop-shadow-2xl shadow-black">{budget.toLocaleString()}<span className="text-3xl align-super font-bold">+</span></span>
+              </div>
+              {/* Divider */}
+              <div className="hidden sm:block w-px h-16 bg-white/30 mx-4" />
+              {/* Projects Counter */}
+              <div className="flex flex-col items-center flex-1">
+                <span className="text-2xl sm:text-3xl font-bold text-white mb-2 drop-shadow-2xl shadow-black">Projects this year</span>
+                <span className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-green-300 tabular-nums drop-shadow-2xl shadow-black">{projects}<span className="text-3xl align-super font-bold">+</span></span>
+              </div>
+            </div>
         </motion.div>
-        {/* Counters Section */}
-        <div className="relative z-30 w-full max-w-6xl mt-12 flex flex-row items-center justify-between">
-          {/* Left Counter */}
-          <div className="flex flex-col items-center">
-            <span className="text-4xl sm:text-4xl font-bold text-gray-700 mb-2">Budget</span>
-            <span className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-green-700 tabular-nums">{budget.toLocaleString()}<span className="text-3xl align-super font-bold">+</span></span>
-          </div>
-          {/* Divider */}
-          <div className="w-px h-16 bg-green-100 mx-4 hidden sm:block" />
-          {/* Right Counter */}
-          <div className="flex flex-col items-center">
-            <span className="text-xl sm:text-4xl font-bold text-gray-700 mb-2">Projects this year</span>
-            <span className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-green-700 tabular-nums">{projects}<span className="text-3xl align-super font-bold">+</span></span>
-          </div>
-        </div>
       </div>
     </section>
   );

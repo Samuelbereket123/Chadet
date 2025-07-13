@@ -5,7 +5,7 @@ import testimonials from '../../data/testimonials';
 
 export default function TestimonialsSection() {
   return (
-    <section className="relative w-full bg-white py-20 px-2 sm:px-6 lg:px-8 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-b from-white to-green-50 py-32 px-2 sm:px-6 lg:px-8 overflow-hidden">
       <GridBG />
       {/* Soft glowing gradients and blurred shapes (same as Hero) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -13,11 +13,10 @@ export default function TestimonialsSection() {
         <div className="absolute right-0 top-1/4 w-[40vw] h-[60vw] max-w-[500px] bg-green-200 opacity-40 blur-3xl rounded-full" />
         <div className="absolute right-10 top-0 w-60 h-60 bg-green-100 opacity-30 blur-2xl rounded-full rotate-12" />
       </div>
-      <div className="relative z-20 flex flex-col items-center mb-12">
-        <span className="inline-block mb-4 rounded-full bg-green-100 px-4 py-1 text-xs font-semibold text-green-700 shadow">Testimonials</span>
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-center text-gray-900 tracking-wide">Testimonials</h2>
+      <div className="relative z-20 flex flex-col items-center mb-16">
+        <h2 className="text-5xl sm:text-6xl font-extrabold text-center text-green-600 tracking-wide">Testimonials</h2>
       </div>
-      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-8 max-w-7xl mx-auto">
+      <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 3xl:grid-cols-5 gap-10 max-w-7xl mx-auto">
         {testimonials.map((t, idx) => (
           <div
             key={idx}
@@ -33,13 +32,6 @@ export default function TestimonialsSection() {
             <blockquote className="text-gray-700 text-base sm:text-lg italic mb-4">“{t.quote}”</blockquote>
             {/* User info */}
             <div className="flex items-center gap-3 mt-auto">
-              <Image
-                src={t.image}
-                alt={t.name}
-                width={48}
-                height={48}
-                className="rounded-full border-2 border-green-200 shadow object-cover"
-              />
               <div className="flex flex-col">
                 <span className="font-semibold text-gray-900 leading-tight">{t.name}</span>
                 <span className="text-gray-500 text-xs leading-tight">{t.role}</span>

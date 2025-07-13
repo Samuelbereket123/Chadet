@@ -8,22 +8,22 @@ export interface Pillar {
 
 const pillars: Pillar[] = [
   {
-    slug: 'safeguarding',
-    title: 'Safeguarding',
-    description: 'Protecting children and vulnerable individuals from harm, abuse, and exploitation through robust policies and practices.',
-    fullDescription: 'Safeguarding is a critical pillar of our work. It is the foundation of everything we do. We are committed to protecting children and vulnerable individuals from harm, abuse, and exploitation through robust policies and practices.',
+    slug: 'education',
+    title: 'Education',
+    description: 'Promoting access and ensuring retention and transition for vulnerable and marginalised children through various education programs.',
+    fullDescription: 'CHADET\'s work on education focuses on promoting access and ensuring retention and transition for vulnerable and marginalised children. The education programs extend support under Non-Formal/ Alternative Basic Education (ABE), Early Childhood Care and Education (ECCE) and the provision of support for children at primary and secondary level of education with a focus on Girls\' Education.',
     icon: 'FaHandHoldingHeart',
   },
   {
-    slug: 'education',
-    title: 'Education',
-    description: 'Providing access to quality education and learning opportunities for all, empowering communities for a brighter future.',
-    fullDescription: 'Education is a critical pillar of our work. It is the foundation of everything we do. We are committed to providing access to quality education and learning opportunities for all, empowering communities for a brighter future.',
+    slug: 'livelihoods',
+    title: 'Livelihoods',
+    description: 'Facilitating training in marketable skills, economic empowerment for women and improving household nutrition.',
+    fullDescription: 'Through facilitating training in marketable skills, economic empowerment for women and improving household nutrition, CHADET is making efforts to reduce the vulnerabilities of children to different forms of challenges in their lives and in their transitions into adulthood.',
     icon: 'FaLeaf',
   },
   {
     slug: 'capacity-development-livelihoods',
-    title: 'Capacity Development & Livelihoods',
+    title: 'Protection and safeguarding',
     description: 'Building skills, knowledge, and sustainable livelihoods to foster self-reliance and economic growth.',
     fullDescription: 'Capacity Development & Livelihoods is a critical pillar of our work. It is the foundation of everything we do. We are committed to building skills, knowledge, and sustainable livelihoods to foster self-reliance and economic growth.',
     icon: 'FaHandsHelping',
@@ -37,7 +37,7 @@ const pillars: Pillar[] = [
   },
   {
     slug: 'advocacy',
-    title: 'Advocacy',
+    title: 'Capacity Development',
     description: 'Championing the rights and well-being of children and communities through policy influence and public campaigns.',
     fullDescription: 'Advocacy is a critical pillar of our work. It is the foundation of everything we do. We are committed to championing the rights and well-being of children and communities through policy influence and public campaigns.',
     icon: 'FaHandHoldingHeart',
