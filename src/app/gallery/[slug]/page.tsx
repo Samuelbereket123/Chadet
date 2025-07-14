@@ -2,11 +2,7 @@ import { notFound } from 'next/navigation';
 import galleryItems from '../../../data/gallery';
 import GridBG from '../../../components/GridBG';
 
-interface GalleryDetailPageProps {
-  params: { slug: string };
-}
-
-export default function GalleryDetailPage({ params }: GalleryDetailPageProps) {
+export default function GalleryDetailPage({ params }: { params: { slug: string } }) {
   const item = galleryItems.find((g) => g.slug === params.slug);
   if (!item) return notFound();
 
