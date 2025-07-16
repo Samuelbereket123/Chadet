@@ -25,9 +25,9 @@ export default function VerticalPillarsSection() {
           <span className="border-b-0 sm:border-b-2 border-green-700 pb-0 sm:pb-2">Strategic Problem Areas</span>
         </h2>
         <div className="max-w-7xl mx-auto w-full">
-          {/* First row - 3 pillars */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 mb-12">
-            {pillars.slice(0, 3).map((pillar, idx) => {
+          {/* First row - 2 pillars centered */}
+          <div className="flex justify-center gap-6 sm:gap-8 lg:gap-12 mb-12">
+            {pillars.slice(0, 2).map((pillar, idx) => {
               const Icon = iconMap[pillar.icon];
               return (
                 <div 
@@ -60,9 +60,9 @@ export default function VerticalPillarsSection() {
             })}
           </div>
           
-          {/* Second row - 2 pillars centered */}
-          <div className="flex justify-center gap-6 sm:gap-8 lg:gap-12">
-            {pillars.slice(3, 5).map((pillar, idx) => {
+          {/* Second row - 3 pillars centered */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 justify-center">
+            {pillars.slice(2, 5).map((pillar, idx) => {
               const Icon = iconMap[pillar.icon];
               return (
                 <div 
@@ -71,7 +71,7 @@ export default function VerticalPillarsSection() {
                 >
                   {/* Number */}
                   <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-lg sm:text-xl lg:text-2xl font-bold shadow-lg mb-3 sm:mb-4">
-                    {idx + 4}
+                    {idx + 3}
                   </div>
                   {/* Content */}
                   <div className="bg-white border border-green-100 rounded-xl sm:rounded-2xl shadow-lg hover:shadow-xl transition-shadow w-full p-4 sm:p-6">

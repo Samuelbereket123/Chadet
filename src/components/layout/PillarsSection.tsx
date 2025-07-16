@@ -48,26 +48,52 @@ export default function PillarsSection() {
           Our Pillars
         </motion.h2>
 
-        {/* Pillars Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 lg:gap-12 xl:gap-16">
-          {pillars.map((pillar, index) => (
-            <motion.div
-              key={index}
-              className="bg-white shadow-lg hover:shadow-xl border border-green-100 hover:scale-[1.05] transition-all duration-500 p-8 lg:p-10 xl:p-12 w-64 h-64 flex flex-col justify-center items-center"
-              initial={{ opacity: 0, y: 50, scale: 0.9 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-100px" }}
-              whileHover={{ y: -8, scale: 1.05 }}
-            >
-              <h3 className="text-green-700 font-bold text-xl md:text-2xl lg:text-3xl text-center mb-6">
-                {pillar.title}
-              </h3>
-              <p className="text-gray-600 text-base md:text-lg lg:text-xl text-center px-2 leading-relaxed">
-                {pillar.description}
-              </p>
-            </motion.div>
-          ))}
+        {/* First row: 2 pillars */}
+        <div className="flex flex-col items-center gap-8 mb-8">
+          <div className="w-full flex flex-col sm:flex-row justify-center gap-8">
+            {pillars.slice(0, 2).map((pillar, index) => (
+              <motion.div
+                key={index}
+                className="bg-white shadow-lg hover:shadow-xl border border-green-100 hover:scale-[1.05] transition-all duration-500 p-8 lg:p-10 xl:p-12 w-64 h-64 flex flex-col justify-center items-center mx-auto"
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: index * 0.15, ease: 'easeOut' }}
+                viewport={{ once: true, margin: '-100px' }}
+                whileHover={{ y: -8, scale: 1.05 }}
+              >
+                <h3 className="text-green-700 font-bold text-xl md:text-2xl lg:text-3xl text-center mb-6">
+                  {pillar.title}
+                </h3>
+                <p className="text-gray-600 text-base md:text-lg lg:text-xl text-center px-2 leading-relaxed">
+                  {pillar.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Second row: 3 pillars */}
+        <div className="flex flex-col items-center gap-8">
+          <div className="w-full flex flex-col sm:flex-row justify-center gap-8">
+            {pillars.slice(2, 5).map((pillar, index) => (
+              <motion.div
+                key={index + 2}
+                className="bg-white shadow-lg hover:shadow-xl border border-green-100 hover:scale-[1.05] transition-all duration-500 p-8 lg:p-10 xl:p-12 w-64 h-64 flex flex-col justify-center items-center mx-auto"
+                initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.8, delay: (index + 2) * 0.15, ease: 'easeOut' }}
+                viewport={{ once: true, margin: '-100px' }}
+                whileHover={{ y: -8, scale: 1.05 }}
+              >
+                <h3 className="text-green-700 font-bold text-xl md:text-2xl lg:text-3xl text-center mb-6">
+                  {pillar.title}
+                </h3>
+                <p className="text-gray-600 text-base md:text-lg lg:text-xl text-center px-2 leading-relaxed">
+                  {pillar.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
