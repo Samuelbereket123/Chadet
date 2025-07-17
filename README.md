@@ -1,3 +1,14 @@
+# CHADET Ethiopia Website
+
+This is the official website for CHADET Ethiopia, a non-governmental organization dedicated to empowering children and communities across Ethiopia. The site showcases CHADET’s mission, vision, and impact through dynamic sections such as Strategic Problem Areas, Projects Timeline, Testimonials, and Supporters Carousel. Built with Next.js and React, the platform highlights CHADET’s work in education, healthcare, protection, community development, advocacy, and more.
+
+**Key features include:**
+- Overview of CHADET’s pillars and strategic problem areas
+- Detailed timeline and descriptions of ongoing and past projects
+- Testimonials from beneficiaries and partners
+- Carousel of supporters and partners
+- Responsive, modern design with interactive UI elements
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
